@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Chamber Group — Culture. Strategy. Influence.</title>
+<meta name="description" content="The Chamber Group is a full-service public relations, image marketing, branding, and special events firm connecting brands, talent, and culture.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Neue+Haas+Grotesk+Display+Pro:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0a0a0a;
+    --ivory: #f5f2ed;
+    --warm-white: #faf8f5;
+    --charcoal: #1c1c1c;
+    --mid: #6b6b6b;
+    --light: #c8c4bc;
+    --accent: #b89a6c;
+    --accent-dark: #8a7050;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', Helvetica, sans-serif;
+    --display: 'Cormorant Garamond', Georgia, serif;
+  }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    background: var(--ink);
+    color: var(--ivory);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* CUSTOM CURSOR */
+  .cursor {
+    position: fixed;
+    width: 10px; height: 10px;
+    background: var(--ivory);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s, background 0.3s;
+    mix-blend-mode: difference;
+  }
+  .cursor-ring {
+    position: fixed;
+    width: 40px; height: 40px;
+    border: 1px solid rgba(245,242,237,0.4);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: all 0.12s ease;
+  }
+  body.cursor-hover .cursor { width: 60px; height: 60px; }
+  body.cursor-hover .cursor-ring { opacity: 0; }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 2px; }
+  ::-webkit-scrollbar-track { background: var(--ink); }
+  ::-webkit-scrollbar-thumb { background: var(--accent); }
+
+  /* NOISE TEXTURE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  /* ─── NAVIGATION ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 28px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 0.5s, padding 0.4s;
+  }
+  nav.scrolled {
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(20px);
+    padding: 18px 48px;
+    border-bottom: 1px solid rgba(245,242,237,0.06);
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ivory);
+    text-decoration: none;
+    line-height: 1.2;
+  }
+  .nav-logo span { display: block; font-size: 0.6rem; letter-spacing: 0.35em; color: var(--accent); font-family: var(--sans); font-weight: 400; margin-top: 2px; }
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--light);
+    text-decoration: none;
+    transition: color 0.3s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 0;
+    width: 0; height: 1px;
+    background: var(--accent);
+    transition: width 0.3s;
+  }
+  .nav-links a:hover { color: var(--ivory); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-cta {
+    font-family: var(--sans);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: var(--ivory);
+    padding: 10px 22px;
+    text-decoration: none;
+    transition: background 0.3s, color 0.3s;
+  }
+  .nav-cta:hover { background: var(--accent); color: var(--ivory); }
+
+  /* HAMBURGER */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px; height: 1px;
+    background: var(--ivory);
+    transition: all 0.3s;
+  }
+  .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
+
+  /* MOBILE MENU */
+  .mobile-menu {
+    position: fixed;
+    inset: 0;
+    background: var(--ink);
+    z-index: 99;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s;
+  }
+  .mobile-menu.open { opacity: 1; pointer-events: all; }
+  .mobile-menu a {
+    font-family: var(--serif);
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    font-weight: 300;
+    color: var(--ivory);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: color 0.3s;
+  }
+  .mobile-menu a:hover { color: var(--accent); }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, #111 0%, #0a0a0a 50%, #151210 100%);
+  }
+  .hero-bg-image {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 75% 40%, rgba(184,154,108,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 60% at 20% 70%, rgba(184,154,108,0.04) 0%, transparent 50%);
+  }
+  .hero-lines {
+    position: absolute;
+    top: 0; right: 0;
+    width: 45%;
+    height: 100%;
+    overflow: hidden;
+    opacity: 0.06;
+  }
+  .hero-lines::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 1px; height: 140%;
+    background: linear-gradient(to bottom, transparent, var(--ivory), transparent);
+    transform: rotate(12deg);
+    transform-origin: top;
+    animation: lineDrift 8s ease-in-out infinite alternate;
+  }
+  .hero-lines::after {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: 20%;
+    width: 1px; height: 140%;
+    background: linear-gradient(to bottom, transparent, var(--accent), transparent);
+    transform: rotate(12deg);
+    animation: lineDrift 10s ease-in-out infinite alternate-reverse;
+  }
+  @keyframes lineDrift { from { transform: rotate(12deg) translateY(-2%); } to { transform: rotate(12deg) translateY(2%); } }
+
+  .hero-content { position: relative; z-index: 2; max-width: 1400px; }
+  .hero-eyebrow {
+    font-family: var(--sans);
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 32px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 1s 0.3s forwards;
+  }
+  .hero-headline {
+    font-family: var(--serif);
+    font-size: clamp(3.2rem, 7.5vw, 8rem);
+    font-weight: 300;
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    color: var(--ivory);
+    margin-bottom: 40px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1.2s 0.5s forwards;
+  }
+  .hero-headline em { font-style: italic; color: var(--accent); }
+  .hero-sub {
+    font-family: var(--sans);
+    font-size: clamp(0.85rem, 1.5vw, 1rem);
+    font-weight: 300;
+    color: var(--light);
+    max-width: 560px;
+    line-height: 1.75;
+    margin-bottom: 52px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 1s 0.8s forwards;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 1s 1s forwards;
+  }
+  .btn-primary {
+    font-family: var(--sans);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: var(--ivory);
+    padding: 16px 36px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.35s;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+  }
+  .btn-primary:hover::before { transform: scaleX(1); }
+  .btn-primary span { position: relative; z-index: 1; }
+  .btn-primary:hover span { color: var(--ivory); }
+  .btn-ghost {
+    font-family: var(--sans);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ivory);
+    text-decoration: none;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(245,242,237,0.3);
+    transition: border-color 0.3s, color 0.3s;
+  }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 80px;
+    right: 48px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-family: var(--sans);
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--mid);
+    writing-mode: vertical-rl;
+    opacity: 0;
+    animation: fadeIn 1s 1.5s forwards;
+  }
+  .scroll-line {
+    width: 1px; height: 60px;
+    background: linear-gradient(to bottom, var(--mid), transparent);
+    animation: scrollPulse 2s 2s infinite;
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.2); }
+  }
+
+  /* ─── MARQUEE STRIP ─── */
+  .marquee-strip {
+    border-top: 1px solid rgba(245,242,237,0.08);
+    border-bottom: 1px solid rgba(245,242,237,0.08);
+    padding: 18px 0;
+    overflow: hidden;
+    background: rgba(245,242,237,0.02);
+  }
+  .marquee-track {
+    display: flex;
+    gap: 0;
+    animation: marquee 30s linear infinite;
+    white-space: nowrap;
+  }
+  .marquee-track span {
+    font-family: var(--sans);
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--mid);
+    padding: 0 40px;
+  }
+  .marquee-track span.dot { color: var(--accent); padding: 0; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 140px 48px; }
+  .section-label {
+    font-family: var(--sans);
+    font-size: 0.6rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 64px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .section-label::before { content: ''; display: block; width: 30px; height: 1px; background: var(--accent); }
+
+  /* ─── WORK ─── */
+  #work { background: var(--ink); }
+  .work-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 80px;
+  }
+  .work-title {
+    font-family: var(--serif);
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    max-width: 600px;
+  }
+  .work-link {
+    font-family: var(--sans);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--light);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(200,196,188,0.3);
+    padding-bottom: 4px;
+    transition: color 0.3s, border-color 0.3s;
+    white-space: nowrap;
+    align-self: flex-end;
+    margin-bottom: 8px;
+  }
+  .work-link:hover { color: var(--accent); border-color: var(--accent); }
+
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 2px;
+    row-gap: 2px;
+  }
+
+  .work-card {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    background: var(--charcoal);
+  }
+  .work-card:nth-child(1) { grid-column: 1 / 8; grid-row: 1; aspect-ratio: 16/10; }
+  .work-card:nth-child(2) { grid-column: 8 / 13; grid-row: 1; aspect-ratio: 4/3; }
+  .work-card:nth-child(3) { grid-column: 1 / 5; grid-row: 2; aspect-ratio: 4/5; }
+  .work-card:nth-child(4) { grid-column: 5 / 9; grid-row: 2; aspect-ratio: 4/5; }
+  .work-card:nth-child(5) { grid-column: 9 / 13; grid-row: 2; aspect-ratio: 4/5; }
+  .work-card:nth-child(6) { grid-column: 1 / 7; grid-row: 3; aspect-ratio: 16/9; }
+  .work-card:nth-child(7) { grid-column: 7 / 13; grid-row: 3; aspect-ratio: 16/9; }
+
+  .card-placeholder {
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, #1a1a1a 0%, #222 50%, #1a1815 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    inset: 0;
+    transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .work-card:hover .card-placeholder { transform: scale(1.04); }
+
+  .card-placeholder-inner {
+    font-family: var(--serif);
+    font-size: clamp(1.2rem, 3vw, 2.5rem);
+    font-weight: 300;
+    color: rgba(245,242,237,0.06);
+    letter-spacing: 0.05em;
+    text-align: center;
+    padding: 20px;
+    user-select: none;
+  }
+
+  /* Different gradient tones per card */
+  .work-card:nth-child(1) .card-placeholder { background: linear-gradient(135deg, #141414 0%, #1e1a16 100%); }
+  .work-card:nth-child(2) .card-placeholder { background: linear-gradient(135deg, #181818 0%, #1c1c1a 100%); }
+  .work-card:nth-child(3) .card-placeholder { background: linear-gradient(160deg, #151310 0%, #1a1a1a 100%); }
+  .work-card:nth-child(4) .card-placeholder { background: linear-gradient(160deg, #121212 0%, #1c1914 100%); }
+  .work-card:nth-child(5) .card-placeholder { background: linear-gradient(135deg, #141414 0%, #181510 100%); }
+  .work-card:nth-child(6) .card-placeholder { background: linear-gradient(135deg, #111111 0%, #1a1816 100%); }
+  .work-card:nth-child(7) .card-placeholder { background: linear-gradient(135deg, #181818 0%, #141210 100%); }
+
+  .card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.3) 40%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 32px;
+    z-index: 2;
+  }
+  .work-card:hover .card-overlay { opacity: 1; }
+
+  .card-category {
+    font-family: var(--sans);
+    font-size: 0.58rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+    transform: translateY(12px);
+    transition: transform 0.4s 0.05s;
+  }
+  .work-card:hover .card-category { transform: translateY(0); }
+
+  .card-title {
+    font-family: var(--serif);
+    font-size: clamp(1.1rem, 2.5vw, 1.8rem);
+    font-weight: 300;
+    color: var(--ivory);
+    line-height: 1.2;
+    margin-bottom: 10px;
+    transform: translateY(12px);
+    transition: transform 0.4s 0.1s;
+  }
+  .work-card:hover .card-title { transform: translateY(0); }
+
+  .card-desc {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    color: var(--light);
+    font-weight: 300;
+    transform: translateY(12px);
+    transition: transform 0.4s 0.15s;
+  }
+  .work-card:hover .card-desc { transform: translateY(0); }
+
+  /* Always visible minimal label on card bottom */
+  .card-static {
+    position: absolute;
+    bottom: 20px; left: 24px;
+    z-index: 3;
+    pointer-events: none;
+    transition: opacity 0.4s;
+  }
+  .work-card:hover .card-static { opacity: 0; }
+  .card-static-label {
+    font-family: var(--sans);
+    font-size: 0.55rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(245,242,237,0.4);
+  }
+
+  /* ─── ABOUT ─── */
+  #about {
+    background: var(--warm-white);
+    color: var(--ink);
+    padding: 160px 48px;
+  }
+  #about .section-label { color: var(--accent-dark); }
+  #about .section-label::before { background: var(--accent-dark); }
+
+  .about-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .about-headline {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 4.5vw, 4.5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--ink);
+  }
+  .about-headline em { font-style: italic; color: var(--accent-dark); }
+  .about-body {
+    padding-top: 16px;
+  }
+  .about-body p {
+    font-family: var(--sans);
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: #2c2c2c;
+    line-height: 1.85;
+    margin-bottom: 28px;
+  }
+  .about-stat-row {
+    display: flex;
+    gap: 48px;
+    margin-top: 48px;
+    padding-top: 48px;
+    border-top: 1px solid rgba(10,10,10,0.1);
+  }
+  .about-stat { flex: 1; }
+  .stat-number {
+    font-family: var(--serif);
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-label {
+    font-family: var(--sans);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #6b6b6b;
+  }
+
+  /* ─── EXPERTISE ─── */
+  #expertise { background: var(--ink); padding: 140px 48px; }
+  .expertise-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+  .expertise-item {
+    padding: 40px 0;
+    border-bottom: 1px solid rgba(245,242,237,0.07);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: default;
+    transition: padding-left 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .expertise-item:nth-child(odd) { padding-right: 60px; border-right: 1px solid rgba(245,242,237,0.07); }
+  .expertise-item:nth-child(even) { padding-left: 60px; }
+  .expertise-item::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0;
+    width: 3px; height: 0;
+    background: var(--accent);
+    transition: height 0.3s;
+  }
+  .expertise-item:hover::before { height: 100%; }
+  .expertise-item:hover { padding-left: 20px; }
+  .expertise-item:nth-child(even):hover { padding-left: 76px; }
+  .expertise-item:nth-child(odd):hover { padding-left: 20px; }
+
+  .expertise-name {
+    font-family: var(--serif);
+    font-size: clamp(1.2rem, 2.2vw, 1.8rem);
+    font-weight: 300;
+    color: var(--ivory);
+    transition: color 0.3s;
+  }
+  .expertise-item:hover .expertise-name { color: var(--accent); }
+  .expertise-arrow {
+    font-size: 0.8rem;
+    color: var(--mid);
+    transition: transform 0.3s, color 0.3s;
+  }
+  .expertise-item:hover .expertise-arrow { transform: translateX(6px); color: var(--accent); }
+
+  /* ─── CLIENTS ─── */
+  #clients {
+    background: linear-gradient(160deg, #0f0d0b 0%, var(--ink) 100%);
+    padding: 140px 48px;
+    text-align: center;
+  }
+  .clients-headline {
+    font-family: var(--serif);
+    font-size: clamp(1.5rem, 3vw, 2.8rem);
+    font-weight: 300;
+    color: var(--ivory);
+    max-width: 700px;
+    margin: 0 auto 20px;
+    line-height: 1.3;
+  }
+  .clients-sub {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 80px;
+  }
+  .logo-wall {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+    background: rgba(245,242,237,0.06);
+    border: 1px solid rgba(245,242,237,0.06);
+    margin-bottom: 64px;
+  }
+  .logo-cell {
+    background: var(--ink);
+    padding: 44px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+  }
+  .logo-cell:hover { background: rgba(184,154,108,0.05); }
+  .logo-placeholder {
+    font-family: var(--serif);
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(245,242,237,0.2);
+    text-align: center;
+    transition: color 0.3s;
+  }
+  .logo-cell:hover .logo-placeholder { color: rgba(245,242,237,0.45); }
+
+  /* ─── FOUNDER ─── */
+  #founder {
+    background: var(--charcoal);
+    padding: 160px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: center;
+  }
+  .founder-image-frame {
+    position: relative;
+    aspect-ratio: 3/4;
+    background: #1a1816;
+    overflow: hidden;
+  }
+  .founder-image-frame::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, rgba(184,154,108,0.08) 0%, transparent 60%);
+  }
+  .founder-image-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .founder-image-placeholder .placeholder-icon {
+    width: 80px; height: 80px;
+    border: 1px solid rgba(245,242,237,0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .placeholder-icon svg { opacity: 0.15; }
+  .founder-image-placeholder p {
+    font-family: var(--sans);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,242,237,0.2);
+  }
+  .founder-accent-line {
+    position: absolute;
+    top: 32px; right: -1px;
+    width: 1px; height: 80px;
+    background: var(--accent);
+  }
+  .founder-content {}
+  .founder-eyebrow {
+    font-family: var(--sans);
+    font-size: 0.6rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 36px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .founder-eyebrow::before { content: ''; display: block; width: 30px; height: 1px; background: var(--accent); }
+  .founder-headline {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3.8rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--ivory);
+    margin-bottom: 36px;
+  }
+  .founder-headline em { font-style: italic; color: var(--accent); }
+  .founder-body {
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--light);
+    line-height: 1.85;
+    margin-bottom: 20px;
+  }
+  .founder-name {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(245,242,237,0.1);
+  }
+  .founder-name-text {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--ivory);
+    letter-spacing: 0.05em;
+  }
+  .founder-title-text {
+    font-family: var(--sans);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-top: 6px;
+  }
+
+  /* ─── CONTACT ─── */
+  #contact {
+    background: var(--warm-white);
+    color: var(--ink);
+    padding: 160px 48px;
+  }
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+  }
+  .contact-left {}
+  #contact .section-label { color: var(--accent-dark); }
+  #contact .section-label::before { background: var(--accent-dark); }
+  .contact-headline {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 4.5vw, 4.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 36px;
+  }
+  .contact-headline em { font-style: italic; color: var(--accent-dark); }
+  .contact-info {
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    color: #3c3c3c;
+    line-height: 1.8;
+    margin-bottom: 48px;
+  }
+  .contact-info a { color: var(--ink); text-decoration: none; border-bottom: 1px solid rgba(10,10,10,0.2); transition: border-color 0.3s; }
+  .contact-info a:hover { border-color: var(--accent-dark); color: var(--accent-dark); }
+  .social-links {
+    display: flex;
+    gap: 32px;
+    margin-top: 32px;
+  }
+  .social-link {
+    font-family: var(--sans);
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #6b6b6b;
+    text-decoration: none;
+    transition: color 0.3s;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+  }
+  .social-link:hover { color: var(--ink); border-color: var(--ink); }
+
+  .contact-form {}
+  .form-group {
+    margin-bottom: 28px;
+  }
+  .form-label {
+    font-family: var(--sans);
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #6b6b6b;
+    display: block;
+    margin-bottom: 10px;
+  }
+  .form-input, .form-textarea, .form-select {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(10,10,10,0.2);
+    padding: 12px 0;
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.3s;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+  .form-input:focus, .form-textarea:focus, .form-select:focus { border-color: var(--ink); }
+  .form-input::placeholder, .form-textarea::placeholder { color: rgba(10,10,10,0.3); }
+  .form-textarea { resize: none; height: 120px; }
+  .form-submit {
+    font-family: var(--sans);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ivory);
+    background: var(--ink);
+    border: none;
+    padding: 18px 48px;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 100%;
+    margin-top: 12px;
+  }
+  .form-submit:hover { background: var(--accent-dark); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--ink);
+    padding: 60px 48px 40px;
+    border-top: 1px solid rgba(245,242,237,0.06);
+  }
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(245,242,237,0.06);
+    margin-bottom: 32px;
+  }
+  .footer-logo {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ivory);
+  }
+  .footer-logo span { display: block; font-size: 0.55rem; letter-spacing: 0.35em; color: var(--accent); font-family: var(--sans); margin-top: 4px; }
+  .footer-nav {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+    align-items: center;
+  }
+  .footer-nav a {
+    font-family: var(--sans);
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mid);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .footer-nav a:hover { color: var(--ivory); }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-copy {
+    font-family: var(--sans);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    color: rgba(245,242,237,0.2);
+  }
+  .footer-tagline {
+    font-family: var(--serif);
+    font-size: 0.85rem;
+    font-style: italic;
+    color: rgba(245,242,237,0.2);
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+  .reveal-delay-5 { transition-delay: 0.5s; }
+
+  /* PAGE LOADER */
+  .loader {
+    position: fixed;
+    inset: 0;
+    background: var(--ink);
+    z-index: 9000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 24px;
+    transition: opacity 0.6s, visibility 0.6s;
+  }
+  .loader.hidden { opacity: 0; visibility: hidden; }
+  .loader-logo {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ivory);
+  }
+  .loader-bar {
+    width: 200px; height: 1px;
+    background: rgba(245,242,237,0.1);
+    position: relative;
+    overflow: hidden;
+  }
+  .loader-bar::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: var(--accent);
+    animation: loaderFill 1.5s ease forwards;
+  }
+  @keyframes loaderFill { to { left: 0; } }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1024px) {
+    nav { padding: 24px 28px; }
+    nav.scrolled { padding: 16px 28px; }
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    section { padding: 100px 28px; }
+    #hero { padding: 0 28px 60px; }
+    .work-card:nth-child(1) { grid-column: 1 / 13; grid-row: 1; }
+    .work-card:nth-child(2) { grid-column: 1 / 7; grid-row: 2; }
+    .work-card:nth-child(3) { grid-column: 7 / 13; grid-row: 2; }
+    .work-card:nth-child(4) { grid-column: 1 / 7; grid-row: 3; }
+    .work-card:nth-child(5) { grid-column: 7 / 13; grid-row: 3; }
+    .work-card:nth-child(6) { grid-column: 1 / 13; grid-row: 4; }
+    .work-card:nth-child(7) { grid-column: 1 / 13; grid-row: 5; }
+    .about-layout { grid-template-columns: 1fr; gap: 48px; }
+    .logo-wall { grid-template-columns: repeat(3, 1fr); }
+    #founder { grid-template-columns: 1fr; gap: 60px; padding: 100px 28px; }
+    .contact-layout { grid-template-columns: 1fr; gap: 60px; }
+    #contact { padding: 100px 28px; }
+    footer { padding: 48px 28px 32px; }
+    .footer-top { flex-direction: column; gap: 32px; }
+    .footer-nav { flex-wrap: wrap; }
+    .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+  }
+
+  @media (max-width: 640px) {
+    .expertise-grid { grid-template-columns: 1fr; }
+    .expertise-item:nth-child(odd) { padding-right: 0; border-right: none; }
+    .expertise-item:nth-child(even) { padding-left: 0; }
+    .expertise-item:nth-child(even):hover { padding-left: 20px; }
+    .about-stat-row { gap: 24px; }
+    .logo-wall { grid-template-columns: repeat(2, 1fr); }
+    .work-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+    .hero-actions { flex-direction: column; align-items: flex-start; }
+    .hero-scroll { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PAGE LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-logo">The Chamber Group</div>
+  <div class="loader-bar"></div>
+</div>
+
+<!-- CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#work" onclick="closeMobile()">Work</a>
+  <a href="#expertise" onclick="closeMobile()">Expertise</a>
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#clients" onclick="closeMobile()">Clients</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+</div>
+
+<!-- NAVIGATION -->
+<nav id="nav">
+  <a href="#" class="nav-logo">
+    The Chamber Group
+    <span>New York · Est. Culture</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#clients">Clients</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Contact</a>
+  <div class="hamburger" id="hamburger" onclick="toggleMobile()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-bg-image"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">New York · PR · Culture · Strategy</div>
+    <h1 class="hero-headline">
+      We Shape Culture<br>Through <em>Strategy,</em><br>Storytelling &amp; Influence.
+    </h1>
+    <p class="hero-sub">
+      A New York-based public relations, image marketing, branding, and special events firm working across entertainment, fashion, beauty, sports, film, television, music, and lifestyle.
+    </p>
+    <div class="hero-actions">
+      <a href="#work" class="btn-primary"><span>View Work</span></a>
+      <a href="#contact" class="btn-ghost">Start a Conversation</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-track" id="marqueeTrack">
+    <span>Public Relations</span><span class="dot">·</span>
+    <span>Image Marketing</span><span class="dot">·</span>
+    <span>Brand Strategy</span><span class="dot">·</span>
+    <span>Event Production</span><span class="dot">·</span>
+    <span>Award Campaigns</span><span class="dot">·</span>
+    <span>Talent &amp; Celebrity Strategy</span><span class="dot">·</span>
+    <span>Fashion &amp; Beauty</span><span class="dot">·</span>
+    <span>Sports &amp; Entertainment</span><span class="dot">·</span>
+    <span>Crisis &amp; Reputation</span><span class="dot">·</span>
+    <span>Media Relations</span><span class="dot">·</span>
+    <span>Cultural Communications</span><span class="dot">·</span>
+    <span>Film &amp; Television</span><span class="dot">·</span>
+    <!-- duplicate for seamless loop -->
+    <span>Public Relations</span><span class="dot">·</span>
+    <span>Image Marketing</span><span class="dot">·</span>
+    <span>Brand Strategy</span><span class="dot">·</span>
+    <span>Event Production</span><span class="dot">·</span>
+    <span>Award Campaigns</span><span class="dot">·</span>
+    <span>Talent &amp; Celebrity Strategy</span><span class="dot">·</span>
+    <span>Fashion &amp; Beauty</span><span class="dot">·</span>
+    <span>Sports &amp; Entertainment</span><span class="dot">·</span>
+    <span>Crisis &amp; Reputation</span><span class="dot">·</span>
+    <span>Media Relations</span><span class="dot">·</span>
+    <span>Cultural Communications</span><span class="dot">·</span>
+    <span>Film &amp; Television</span><span class="dot">·</span>
+  </div>
+</div>
+
+<!-- WORK -->
+<section id="work">
+  <div class="work-header reveal">
+    <div class="section-label">Selected Work</div>
+  </div>
+  <div class="work-header">
+    <h2 class="work-title reveal reveal-delay-1">Campaigns that move<br><em style="font-style:italic;font-family:var(--serif)">culture forward.</em></h2>
+    <a href="#contact" class="work-link reveal reveal-delay-2">View All Projects →</a>
+  </div>
+
+  <div class="work-grid">
+    <!-- Card 1 -->
+    <div class="work-card">
+      <div class="card-placeholder"><div class="card-placeholder-inner">Entertainment</div></div>
+      <div class="card-static"><div class="card-static-label">Entertainment Campaign</div></div>
+      <div class="card-overlay">
+        <div class="card-category">Entertainment</div>
+        <div class="card-title">Award Season Dominance</div>
+        <div class="card-desc">Full-scale awards campaign strategy for prestige television</div>
+      </div>
+    </div>
+    <!-- Card 2 -->
+    <div class="work-card">
+      <div class="card-placeholder"><div class="card-placeholder-inner">Fashion</div></div>
+      <div class="card-static"><div class="card-static-label">Fashion & Beauty Launch</div></div>
+      <div class="card-overlay">
+        <div class="card-category">Fashion & Beauty</div>
+        <div class="card-title">The Signature Launch</div>
+        <div class="card-desc">Luxury brand debut across press, retail, and cultural moments</div>
+      </div>
+    </div>
+    <!-- Card 3 -->
+    <div class="work-card">
+      <div class="card-placeholder"><div class="card-placeholder-inner">Music</div></div>
+      <div class="card-static"><div class="card-static-label">Artist Publicity</div></div>
+      <div class="card-overlay">
+        <div class="card-category">Music & Artist</div>
+        <div class="card-title">Artist Image Strategy</div>
+        <div class="card-desc">Narrative-first publicity for a platinum-certified artist</div>
+      </div>
+    </div>
+    <!-- Card 4 -->
+    <div class="work-card">
+      <div class="card-placeholder"><div class="card-placeholder-inner">Film & TV</div></div>
+      <div class="card-static"><div class="card-static-label">Film & TV Campaign</div></div>
+      <div class="card-overlay">
+        <div class="card-category">Film, TV & Streaming</div>
+        <div class="card-title">Streaming Premiere Campaign</div>
+        <div class="card-desc">Cultural momentum for a major streaming original</div>
+      </div>
+    </div>
+    <!-- Card 5 -->
+    <div class="work-card">
+      <div class="card-placeholder"><div class="card-placeholder-inner">Sports</div></div>
+      <div class="card-static"><div class="card-static-label">Sports & Athlete Branding</div></div>
+      <div class="card-overlay">
+        <div class="card-category">Sports & Athlete</div>
+        <div class="card-title">Athlete Brand Architecture</div>
+        <div class="card-desc">Cross-category image strategy for an elite athlete</div>
+      </div>
+    </div>
+    <!-- Card 6 -->
+    <div class="work-card">
+      <div class="card-placeholder"><div class="card-placeholder-inner">Events</div></div>
+      <div class="card-static"><div class="card-static-label">Luxury Events & Red Carpet</div></div>
+      <div class="card-overlay">
+        <div class="card-category">Events & Red Carpet</div>
+        <div class="card-title">The Cultural Moment</div>
+        <div class="card-desc">Bespoke event production from concept through press coverage</div>
+      </div>
+    </div>
+    <!-- Card 7 -->
+    <div class="work-card">
+      <div class="card-placeholder"><div class="card-placeholder-inner">Culture</div></div>
+      <div class="card-static"><div class="card-static-label">Cultural Partnership</div></div>
+      <div class="card-overlay">
+        <div class="card-category">Cultural Partnerships</div>
+        <div class="card-title">Cross-Cultural Convergence</div>
+        <div class="card-desc">Brand partnership positioned at the intersection of identity and influence</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label reveal">About</div>
+  <div class="about-layout">
+    <div>
+      <h2 class="about-headline reveal reveal-delay-1">
+        Built at the intersection<br>of <em>media, influence,</em><br>and culture.
+      </h2>
+    </div>
+    <div class="about-body reveal reveal-delay-2">
+      <p>
+        The Chamber Group develops strategic campaigns for brands, talent, institutions, and cultural leaders. From media relations and image strategy to events, award campaigns, and brand partnerships, we create visibility that moves conversations forward.
+      </p>
+      <p>
+        Our work lives where culture is made — in the coverage that defines reputations, the moments that shift perception, and the stories that endure beyond the news cycle.
+      </p>
+      <div class="about-stat-row reveal reveal-delay-3">
+        <div class="about-stat">
+          <div class="stat-number">20+</div>
+          <div class="stat-label">Years in Culture</div>
+        </div>
+        <div class="about-stat">
+          <div class="stat-number">8</div>
+          <div class="stat-label">Sectors Served</div>
+        </div>
+        <div class="about-stat">
+          <div class="stat-number">NYC</div>
+          <div class="stat-label">Based & Global</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section id="expertise">
+  <div class="section-label reveal">Expertise</div>
+  <h2 class="reveal reveal-delay-1" style="font-family:var(--serif);font-size:clamp(2rem,4vw,4rem);font-weight:300;color:var(--ivory);margin-bottom:72px;max-width:500px;line-height:1.1;">
+    What we<br><em style="font-style:italic;">do best.</em>
+  </h2>
+  <div class="expertise-grid">
+    <div class="expertise-item reveal">
+      <span class="expertise-name">Public Relations</span>
+      <span class="expertise-arrow">→</span>
+    </div>
+    <div class="expertise-item reveal reveal-delay-1">
+      <span class="expertise-name">Image Marketing</span>
+      <span class="expertise-arrow">→</span>
+    </div>
+    <div class="expertise-item reveal reveal-delay-1">
+      <span class="expertise-name">Brand Strategy</span>
+      <span class="expertise-arrow">→</span>
+    </div>
+    <div class="expertise-item reveal reveal-delay-2">
+      <span class="expertise-name">Event Production</span>
+      <span class="expertise-arrow">→</span>
+    </div>
+    <div class="expertise-item reveal reveal-delay-2">
+      <span class="expertise-name">Media Relations</span>
+      <span class="expertise-arrow">→</span>
+    </div>
+    <div class="expertise-item reveal reveal-delay-3">
+      <span class="expertise-name">Award Campaigns</span>
+      <span class="expertise-arrow">→</span>
+    </div>
+    <div class="expertise-item reveal reveal-delay-3">
+      <span class="expertise-name">Talent &amp; Celebrity Strategy</span>
+      <span class="expertise-arrow">→</span>
+    </div>
+    <div class="expertise-item reveal reveal-delay-4">
+      <span class="expertise-name">Fashion, Beauty &amp; Lifestyle</span>
+      <span class="expertise-arrow">→</span>
+    </div>
+    <div class="expertise-item reveal reveal-delay-4">
+      <span class="expertise-name">Sports &amp; Entertainment PR</span>
+      <span class="expertise-arrow">→</span>
+    </div>
+    <div class="expertise-item reveal reveal-delay-5">
+      <span class="expertise-name">Crisis &amp; Reputation Strategy</span>
+      <span class="expertise-arrow">→</span>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section id="clients">
+  <div class="section-label reveal" style="justify-content:center;">Clients</div>
+  <h2 class="clients-headline reveal reveal-delay-1">
+    Trusted across music, fashion, entertainment, sports, beauty, film, television, and culture.
+  </h2>
+  <p class="clients-sub reveal reveal-delay-2">A select roster of brands, talent, and institutions</p>
+
+  <div class="logo-wall reveal reveal-delay-2">
+    <div class="logo-cell"><div class="logo-placeholder">Client<br>Logo</div></div>
+    <div class="logo-cell"><div class="logo-placeholder">Client<br>Logo</div></div>
+    <div class="logo-cell"><div class="logo-placeholder">Client<br>Logo</div></div>
+    <div class="logo-cell"><div class="logo-placeholder">Client<br>Logo</div></div>
+    <div class="logo-cell"><div class="logo-placeholder">Client<br>Logo</div></div>
+    <div class="logo-cell"><div class="logo-placeholder">Client<br>Logo</div></div>
+    <div class="logo-cell"><div class="logo-placeholder">Client<br>Logo</div></div>
+    <div class="logo-cell"><div class="logo-placeholder">Client<br>Logo</div></div>
+    <div class="logo-cell"><div class="logo-placeholder">Client<br>Logo</div></div>
+    <div class="logo-cell"><div class="logo-placeholder">Client<br>Logo</div></div>
+  </div>
+
+  <p class="reveal reveal-delay-3" style="font-family:var(--sans);font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);">
+    — Logo placements require client approval. Contact us to discuss representation.
+  </p>
+</section>
+
+<!-- FOUNDER -->
+<section id="founder">
+  <div class="founder-image-frame reveal">
+    <div class="founder-image-placeholder">
+      <div class="placeholder-icon">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="16" cy="12" r="6" stroke="white" stroke-width="1"/>
+          <path d="M4 28c0-6.627 5.373-12 12-12s12 5.373 12 12" stroke="white" stroke-width="1"/>
+        </svg>
+      </div>
+      <p>Photo — Replace with approved image</p>
+    </div>
+    <div class="founder-accent-line"></div>
+  </div>
+  <div class="founder-content">
+    <div class="founder-eyebrow reveal">Legacy</div>
+    <h2 class="founder-headline reveal reveal-delay-1">
+      <em>Experience.</em><br>Access.<br>Cultural fluency.
+    </h2>
+    <p class="founder-body reveal reveal-delay-2">
+      Chris Chambers and The Chamber Group have built a legacy as one of New York's most respected boutique public relations and image marketing firms. For over two decades, The Chamber Group has stewarded the reputations and narratives of some of the most recognizable names in entertainment, fashion, sports, and culture.
+    </p>
+    <p class="founder-body reveal reveal-delay-3">
+      Rooted in deep media relationships, cultural intelligence, and precision storytelling, The Chamber Group operates where brand identity and public perception converge — creating lasting visibility for clients who set the standard.
+    </p>
+    <div class="founder-name reveal reveal-delay-4">
+      <div class="founder-name-text">Chris Chambers</div>
+      <div class="founder-title-text">Founder & Principal — The Chamber Group</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label reveal">Contact</div>
+  <div class="contact-layout">
+    <div class="contact-left">
+      <h2 class="contact-headline reveal reveal-delay-1">
+        Let's build the next<br><em>cultural moment.</em>
+      </h2>
+      <div class="contact-info reveal reveal-delay-2">
+        <p>
+          New York City<br>
+          <a href="mailto:info@thechambergroup.com">info@thechambergroup.com</a><br>
+          <a href="https://thechambergroup.com">thechambergroup.com</a>
+        </p>
+      </div>
+      <div class="social-links reveal reveal-delay-3">
+        <a href="https://instagram.com" class="social-link" target="_blank">Instagram</a>
+        <a href="https://linkedin.com" class="social-link" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+    <div class="contact-form reveal reveal-delay-2">
+      <div class="form-group">
+        <label class="form-label">Name</label>
+        <input class="form-input" type="text" placeholder="Your name">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input class="form-input" type="email" placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Inquiry Type</label>
+        <select class="form-select form-input">
+          <option value="" disabled selected>Select a service area</option>
+          <option>Public Relations</option>
+          <option>Image Marketing</option>
+          <option>Brand Strategy</option>
+          <option>Event Production</option>
+          <option>Award Campaigns</option>
+          <option>General Inquiry</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Message</label>
+        <textarea class="form-textarea" placeholder="Tell us about your project or inquiry..."></textarea>
+      </div>
+      <button class="form-submit">Start a Conversation</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-logo">
+      The Chamber Group
+      <span>New York · PR · Culture · Strategy</span>
+    </div>
+    <ul class="footer-nav">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#expertise">Expertise</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#clients">Clients</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 The Chamber Group. All rights reserved.</div>
+    <div class="footer-tagline">Connecting brands, talent, and culture.</div>
+  </div>
+</footer>
+
+<script>
+  // PAGE LOADER
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('loader').classList.add('hidden');
+    }, 1800);
+  });
+
+  // CURSOR
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let cx = 0, cy = 0, rx = 0, ry = 0;
+
+  document.addEventListener('mousemove', e => {
+    cx = e.clientX; cy = e.clientY;
+    cursor.style.left = cx + 'px';
+    cursor.style.top = cy + 'px';
+  });
+
+  function animateRing() {
+    rx += (cx - rx) * 0.12;
+    ry += (cy - ry) * 0.12;
+    ring.style.left = rx + 'px';
+    ring.style.top = ry + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  document.querySelectorAll('a, button, .work-card, .expertise-item, .logo-cell').forEach(el => {
+    el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+    el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+  });
+
+  // NAV SCROLL
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // MOBILE MENU
+  function toggleMobile() {
+    const menu = document.getElementById('mobileMenu');
+    const burger = document.getElementById('hamburger');
+    menu.classList.toggle('open');
+    burger.classList.toggle('open');
+  }
+  function closeMobile() {
+    document.getElementById('mobileMenu').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  }
+
+  // SCROLL REVEAL
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // SMOOTH ANCHOR SCROLL
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // PARALLAX ON HERO
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    const hero = document.querySelector('.hero-content');
+    if (hero && scrolled < window.innerHeight) {
+      hero.style.transform = `translateY(${scrolled * 0.15}px)`;
+      hero.style.opacity = 1 - scrolled / (window.innerHeight * 0.8);
+    }
+  });
+</script>
+</body>
+</html>
