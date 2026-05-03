@@ -3,8 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Chamber Group — Culture. Strategy. Influence.</title>
-<meta name="description" content="The Chamber Group is a full-service public relations, image marketing, branding, and special events firm connecting brands, talent, and culture.">
+<title>The Chamber Group | High-End PR & Cultural Strategy Agency NYC</title>
+<meta name="description" content="Turn your brand into a cultural icon. The Chamber Group is NYC's premier luxury PR, image marketing, and cultural strategy agency. Apply for partnership today.">
+<meta name="keywords" content="Luxury PR agency NYC, premium public relations, celebrity image marketing, cultural strategy, high-end brand strategy, crisis management">
+<meta property="og:title" content="The Chamber Group | Premium PR & Cultural Strategy">
+<meta property="og:description" content="We transform talent and brands into cultural icons. Work with the agency behind the world's most defining cultural moments.">
+<meta property="og:type" content="website">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Neue+Haas+Grotesk+Display+Pro:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -1060,6 +1064,117 @@
     .hero-actions { flex-direction: column; align-items: flex-start; }
     .hero-scroll { display: none; }
   }
+  /* AI CHATBOT */
+  .chatbot-widget {
+    position: fixed;
+    bottom: 40px; right: 40px;
+    z-index: 9990;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 16px;
+  }
+  .chatbot-bubble {
+    width: 60px; height: 60px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(184,154,108,0.3);
+    transition: transform 0.3s, background 0.3s;
+  }
+  .chatbot-bubble:hover { transform: scale(1.05); background: var(--ivory); }
+  .chatbot-bubble svg { width: 28px; height: 28px; fill: var(--ink); transition: fill 0.3s; }
+  .chatbot-bubble:hover svg { fill: var(--accent); }
+  
+  .chatbot-window {
+    width: 340px;
+    background: var(--ivory);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    opacity: 0; pointer-events: none;
+    transform: translateY(20px);
+    transition: opacity 0.4s, transform 0.4s;
+    transform-origin: bottom right;
+  }
+  .chatbot-window.open { opacity: 1; pointer-events: all; transform: translateY(0); }
+  .chat-header {
+    background: var(--ink);
+    color: var(--ivory);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .chat-header-title { font-family: var(--serif); font-size: 1.2rem; }
+  .chat-header-close { cursor: pointer; font-size: 1.2rem; line-height: 1; }
+  .chat-body {
+    height: 300px;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: var(--warm-white);
+  }
+  .chat-msg {
+    max-width: 85%;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+  .chat-msg.bot { background: rgba(184,154,108,0.15); color: var(--ink); align-self: flex-start; border-bottom-left-radius: 2px; }
+  .chat-msg.user { background: var(--ink); color: var(--ivory); align-self: flex-end; border-bottom-right-radius: 2px; }
+  .chat-input-area {
+    padding: 16px;
+    background: var(--ivory);
+    border-top: 1px solid rgba(10,10,10,0.1);
+    display: flex;
+    gap: 8px;
+  }
+  .chat-input {
+    flex: 1;
+    border: 1px solid rgba(10,10,10,0.2);
+    border-radius: 20px;
+    padding: 10px 16px;
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    outline: none;
+  }
+  .chat-send {
+    background: var(--accent);
+    border: none;
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  .chat-send:active { transform: scale(0.9); }
+  .chat-send svg { width: 16px; height: 16px; fill: var(--ink); }
+
+  /* Premium Booking Form */
+  .booking-calendar {
+    background: var(--ivory);
+    border-radius: 8px;
+    padding: 32px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+  }
+  .booking-step-title {
+    font-family: var(--sans); font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-dark); margin-bottom: 24px;
+  }
+
+  @media (max-width: 640px) {
+    .chatbot-widget { bottom: 20px; right: 20px; }
+    .chatbot-window { width: calc(100vw - 40px); }
+  }
 </style>
 </head>
 <body>
@@ -1081,7 +1196,7 @@
   <a href="#expertise" onclick="closeMobile()">Expertise</a>
   <a href="#about" onclick="closeMobile()">About</a>
   <a href="#clients" onclick="closeMobile()">Clients</a>
-  <a href="#contact" onclick="closeMobile()">Contact</a>
+  <a href="#booking" onclick="closeMobile()">Apply Now</a>
 </div>
 
 <!-- NAVIGATION -->
@@ -1095,7 +1210,7 @@
     <li><a href="#about">About</a></li>
     <li><a href="#clients">Clients</a></li>
   </ul>
-  <a href="#contact" class="nav-cta">Contact</a>
+  <a href="#booking" class="nav-cta">Apply Now</a>
   <div class="hamburger" id="hamburger" onclick="toggleMobile()">
     <span></span><span></span><span></span>
   </div>
@@ -1110,14 +1225,14 @@
   <div class="hero-content">
     <div class="hero-eyebrow">Est. 2006 · New York City</div>
     <h1 class="hero-headline">
-      We Shape Culture<br>Through <em>Strategy,</em><br>Storytelling &amp; Influence.
+      Become The Authority.<br>Command <em>The Culture.</em>
     </h1>
     <p class="hero-sub">
-      A New York-based public relations, image marketing, branding, and special events firm working across entertainment, fashion, beauty, sports, film, television, music, and lifestyle.
+      You don't need more visibility. You need unquestionable market dominance. We are the premier PR and cultural strategy firm for ambitious brands and iconic talent who demand a legacy.
     </p>
     <div class="hero-actions">
-      <a href="#work" class="btn-primary"><span>View Work</span></a>
-      <a href="#contact" class="btn-ghost">Start a Conversation</a>
+      <a href="#booking" class="btn-primary" style="padding: 18px 42px; font-size: 0.7rem;"><span>Apply For Partnership</span></a>
+      <a href="#work" class="btn-ghost">View Case Studies</a>
     </div>
   </div>
   <div class="hero-scroll">
@@ -1163,8 +1278,8 @@
     <div class="section-label">Selected Work</div>
   </div>
   <div class="work-header">
-    <h2 class="work-title reveal reveal-delay-1">Campaigns that move<br><em style="font-style:italic;font-family:var(--serif)">culture forward.</em></h2>
-    <a href="#contact" class="work-link reveal reveal-delay-2">View All Projects →</a>
+    <h2 class="work-title reveal reveal-delay-1">Campaigns that drive<br><em style="font-style:italic;font-family:var(--serif)">undeniable ROI.</em></h2>
+    <a href="#booking" class="work-link reveal reveal-delay-2">Apply For Partnership →</a>
   </div>
 
   <div class="work-grid">
@@ -1247,15 +1362,15 @@
   <div class="about-layout">
     <div>
       <h2 class="about-headline reveal reveal-delay-1">
-        Built at the intersection<br>of <em>media, influence,</em><br>and culture.
+        Attention is cheap.<br><em>Influence is priceless.</em>
       </h2>
     </div>
     <div class="about-body reveal reveal-delay-2">
       <p>
-        The Chamber Group develops strategic campaigns for brands, talent, institutions, and cultural leaders. From media relations and image strategy to events, award campaigns, and brand partnerships, we create visibility that moves conversations forward.
+        Generic PR chases fleeting trends. We engineer cultural moments that convert attention into equity, authority, and booked business. The Chamber Group is the quiet power behind the world's most talked-about brands and talent.
       </p>
       <p>
-        Our work lives where culture is made — in the coverage that defines reputations, the moments that shift perception, and the stories that endure beyond the news cycle.
+        Whether you are a rising visionary seeking to solidify your legacy, or an enterprise brand aiming to capture market share, we position you at the absolute center of the cultural zeitgeist. We don't just tell your story—we make it impossible to ignore.
       </p>
       <div class="about-stat-row reveal reveal-delay-3">
         <div class="about-stat">
@@ -1279,7 +1394,7 @@
 <section id="expertise">
   <div class="section-label reveal">Expertise</div>
   <h2 class="reveal reveal-delay-1" style="font-family:var(--serif);font-size:clamp(2rem,4vw,4rem);font-weight:300;color:var(--ivory);margin-bottom:72px;max-width:500px;line-height:1.1;">
-    What we<br><em style="font-style:italic;">do best.</em>
+    Strategic capabilities that drive<br><em style="font-style:italic;">unreasonable ROI.</em>
   </h2>
   <div class="expertise-grid">
     <div class="expertise-item reveal">
@@ -1390,54 +1505,62 @@
   </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact">
-  <div class="section-label reveal">Contact</div>
+<!-- BOOKING -->
+<section id="booking">
+  <div class="section-label reveal">Apply for Partnership</div>
   <div class="contact-layout">
     <div class="contact-left">
       <h2 class="contact-headline reveal reveal-delay-1">
-        Let's build the next<br><em>cultural moment.</em>
+        Ready to scale your<br><em>cultural capital?</em>
       </h2>
       <div class="contact-info reveal reveal-delay-2">
         <p>
-          New York City<br>
-          <a href="mailto:info@thechambergroup.com">info@thechambergroup.com</a><br>
-          <a href="https://thechambergroup.com">thechambergroup.com</a>
+          We selectively partner with clients who are serious about accelerating their legacy and scaling their impact. Our capacity is strictly limited to ensure uncompromising quality.
+        </p>
+        <p style="margin-top: 16px;">
+          Submit your application to schedule a private discovery call with our executive team. We will review your objectives and determine if we are the right catalyst for your next era of growth.
         </p>
       </div>
-      <div class="social-links reveal reveal-delay-3">
-        <a href="https://www.instagram.com/thechambergroup_experience/" class="social-link" target="_blank" rel="noopener">Instagram ↗</a>
-        <a href="https://www.linkedin.com/company/the-chamber-group/" class="social-link" target="_blank" rel="noopener">LinkedIn ↗</a>
-        <a href="https://twitter.com/thechambergroup" class="social-link" target="_blank" rel="noopener">Twitter ↗</a>
-        <a href="https://www.facebook.com/ChamberGroup" class="social-link" target="_blank" rel="noopener">Facebook ↗</a>
+      <div class="social-links reveal reveal-delay-3" style="margin-top: 48px; border-top: 1px solid rgba(10,10,10,0.1); padding-top: 32px;">
+        <a href="https://www.instagram.com/thechambergroup_experience/" class="social-link" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.linkedin.com/company/the-chamber-group/" class="social-link" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://twitter.com/thechambergroup" class="social-link" target="_blank" rel="noopener">Twitter</a>
+        <a href="https://www.facebook.com/ChamberGroup" class="social-link" target="_blank" rel="noopener">Facebook</a>
       </div>
     </div>
-    <div class="contact-form reveal reveal-delay-2">
+    <div class="contact-form booking-calendar reveal reveal-delay-2" id="applicationForm">
+      <div class="booking-step-title">Confidential Application</div>
       <div class="form-group">
-        <label class="form-label">Name</label>
-        <input class="form-input" type="text" placeholder="Your name">
+        <label class="form-label">Full Name</label>
+        <input class="form-input" type="text" placeholder="Enter your full name" required>
       </div>
       <div class="form-group">
-        <label class="form-label">Email</label>
-        <input class="form-input" type="email" placeholder="your@email.com">
+        <label class="form-label">Professional Email</label>
+        <input class="form-input" type="email" placeholder="you@company.com" required>
       </div>
       <div class="form-group">
-        <label class="form-label">Inquiry Type</label>
+        <label class="form-label">Company / Brand Name</label>
+        <input class="form-input" type="text" placeholder="Your organization or talent name">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Current Scale / Revenue</label>
         <select class="form-select form-input">
-          <option value="" disabled selected>Select a service area</option>
-          <option>Public Relations</option>
-          <option>Image Marketing</option>
-          <option>Brand Strategy</option>
-          <option>Event Production</option>
-          <option>Award Campaigns</option>
-          <option>General Inquiry</option>
+          <option value="" disabled selected>Select an option</option>
+          <option>Seed / Startup (Under $50k/mo)</option>
+          <option>Scaling ($50k - $250k/mo)</option>
+          <option>Established ($250k - $1M/mo)</option>
+          <option>Enterprise ($1M+/mo)</option>
         </select>
       </div>
       <div class="form-group">
-        <label class="form-label">Message</label>
-        <textarea class="form-textarea" placeholder="Tell us about your project or inquiry..."></textarea>
+        <label class="form-label">What is the #1 objective you want to achieve?</label>
+        <textarea class="form-textarea" placeholder="E.g., I need to reposition my brand for a luxury audience and drive high-ticket client acquisition..." required></textarea>
       </div>
-      <button class="form-submit">Start a Conversation</button>
+      <button class="form-submit" type="button" onclick="submitApplication()" style="padding: 22px 48px; font-size: 0.75rem; background: var(--accent-dark); width: 100%; border-radius: 4px;">Request Discovery Call</button>
+      <div id="formSuccess" style="display:none; margin-top: 20px; text-align: center; color: var(--accent-dark); font-family: var(--sans); font-size: 0.9rem;">
+        Application received. Our executive team will review your details and contact you within 24 hours to schedule your strategy call.
+      </div>
+      <p style="font-family: var(--sans); font-size: 0.65rem; color: #888; text-align: center; margin-top: 16px;">Strictly confidential. No obligation.</p>
     </div>
   </div>
 </section>
@@ -1453,7 +1576,7 @@
       <li><a href="#expertise">Expertise</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#clients">Clients</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#booking">Apply Now</a></li>
     </ul>
   </div>
   <div class="footer-bottom">
@@ -1544,6 +1667,89 @@
       hero.style.opacity = 1 - scrolled / (window.innerHeight * 0.8);
     }
   });
+
+  // CHATBOT
+  let chatStep = 0;
+  function toggleChat() {
+    document.getElementById('chatWindow').classList.toggle('open');
+  }
+  function handleChatEnter(e) {
+    if(e.key === 'Enter') sendChatMessage();
+  }
+  function sendChatMessage() {
+    const input = document.getElementById('chatInput');
+    const msg = input.value.trim();
+    if(!msg) return;
+    
+    const chatBody = document.getElementById('chatBody');
+    
+    const userDiv = document.createElement('div');
+    userDiv.className = 'chat-msg user';
+    userDiv.textContent = msg;
+    chatBody.appendChild(userDiv);
+    input.value = '';
+    
+    chatBody.scrollTop = chatBody.scrollHeight;
+    
+    // Lead gen flow
+    setTimeout(() => {
+      const botDiv = document.createElement('div');
+      botDiv.className = 'chat-msg bot';
+      
+      if (chatStep === 0) {
+        botDiv.textContent = "I can certainly help with that. To ensure I connect you with the right senior strategist, could I get your best email address?";
+        chatStep++;
+      } else if (chatStep === 1) {
+        botDiv.textContent = "Perfect. What is the primary goal you're looking to achieve with The Chamber Group?";
+        chatStep++;
+      } else {
+        botDiv.innerHTML = "Thank you. I've noted your details and our team will reach out shortly. You can also <a href='#booking' style='color:inherit;text-decoration:underline;font-weight:500' onclick='toggleChat()'>fast-track your application here</a>.";
+      }
+      
+      chatBody.appendChild(botDiv);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }, 1000);
+  }
+
+  // FORM SUBMISSION
+  function submitApplication() {
+    const btn = document.querySelector('.form-submit');
+    const successMsg = document.getElementById('formSuccess');
+    if (!document.querySelector('.form-input[type="email"]').value) {
+      alert("Please enter your email.");
+      return;
+    }
+    btn.innerHTML = 'Processing...';
+    btn.style.opacity = '0.7';
+    btn.disabled = true;
+    
+    setTimeout(() => {
+      btn.style.display = 'none';
+      successMsg.style.display = 'block';
+    }, 1500);
+  }
 </script>
+
+<!-- CHATBOT WIDGET -->
+<div class="chatbot-widget">
+  <div class="chatbot-window" id="chatWindow">
+    <div class="chat-header">
+      <div class="chat-header-title">TCG AI Concierge</div>
+      <div class="chat-header-close" onclick="toggleChat()">×</div>
+    </div>
+    <div class="chat-body" id="chatBody">
+      <div class="chat-msg bot">Hello. I am the TCG AI Concierge. Are you looking to elevate your brand's cultural presence and scale your client acquisition?</div>
+    </div>
+    <div class="chat-input-area">
+      <input type="text" class="chat-input" id="chatInput" placeholder="Type your message..." onkeypress="handleChatEnter(event)">
+      <button class="chat-send" onclick="sendChatMessage()">
+        <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="chatbot-bubble" onclick="toggleChat()">
+    <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+  </div>
+</div>
 </body>
 </html>
