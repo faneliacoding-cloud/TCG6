@@ -716,6 +716,20 @@
     transition: background 0.3s;
   }
   .logo-cell:hover { background: rgba(184,154,108,0.05); }
+  .logo-cell {
+    position: relative;
+  }
+  .official-logo {
+    max-width: 75%;
+    max-height: 45px;
+    object-fit: contain;
+    filter: grayscale(1) contrast(1.2) brightness(1.5) opacity(0.6);
+    transition: all 0.4s ease;
+  }
+  .logo-cell:hover .official-logo {
+    filter: grayscale(0) contrast(1) brightness(1) opacity(1);
+    transform: scale(1.05);
+  }
   .logo-placeholder {
     font-family: var(--serif);
     font-size: 0.75rem;
@@ -1469,21 +1483,66 @@
   <p class="clients-sub reveal reveal-delay-2">A select roster of brands, talent, and institutions</p>
 
   <div class="logo-wall reveal reveal-delay-2">
-    <div class="logo-cell"><div class="logo-placeholder">Netflix</div></div>
-    <div class="logo-cell"><div class="logo-placeholder">HBO</div></div>
-    <div class="logo-cell"><div class="logo-placeholder">Starz</div></div>
-    <div class="logo-cell"><div class="logo-placeholder">Versace</div></div>
-    <div class="logo-cell"><div class="logo-placeholder">Gucci</div></div>
-    <div class="logo-cell"><div class="logo-placeholder">Ford<br>Lincoln</div></div>
-    <div class="logo-cell"><div class="logo-placeholder">TIME Inc.</div></div>
-    <div class="logo-cell"><div class="logo-placeholder">Essence</div></div>
-    <div class="logo-cell"><div class="logo-placeholder">Belvedere</div></div>
-    <div class="logo-cell"><div class="logo-placeholder">Bacardi</div></div>
-    <div class="logo-cell"><div class="logo-placeholder">NHL</div></div>
-    <div class="logo-cell"><div class="logo-placeholder">Akil<br>Productions</div></div>
-    <div class="logo-cell"><div class="logo-placeholder">Red Bull</div></div>
-    <div class="logo-cell"><div class="logo-placeholder">BET</div></div>
-    <div class="logo-cell"><div class="logo-placeholder">Moët<br>Hennessy</div></div>
+    <div class="logo-cell">
+      <img src="logo-netflix.jpg" alt="Netflix" class="official-logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <div class="logo-placeholder" style="display:none;">Netflix</div>
+    </div>
+    <div class="logo-cell">
+      <img src="https://logo.clearbit.com/hbo.com" alt="HBO" class="official-logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <div class="logo-placeholder" style="display:none;">HBO</div>
+    </div>
+    <div class="logo-cell">
+      <img src="logo-starz.jpg" alt="Starz" class="official-logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <div class="logo-placeholder" style="display:none;">Starz</div>
+    </div>
+    <div class="logo-cell">
+      <img src="https://logo.clearbit.com/versace.com" alt="Versace" class="official-logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <div class="logo-placeholder" style="display:none;">Versace</div>
+    </div>
+    <div class="logo-cell">
+      <img src="https://logo.clearbit.com/gucci.com" alt="Gucci" class="official-logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <div class="logo-placeholder" style="display:none;">Gucci</div>
+    </div>
+    <div class="logo-cell">
+      <img src="https://logo.clearbit.com/ford.com" alt="Ford" class="official-logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <div class="logo-placeholder" style="display:none;">Ford<br>Lincoln</div>
+    </div>
+    <div class="logo-cell">
+      <img src="https://logo.clearbit.com/time.com" alt="TIME Inc." class="official-logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <div class="logo-placeholder" style="display:none;">TIME Inc.</div>
+    </div>
+    <div class="logo-cell">
+      <img src="https://logo.clearbit.com/essence.com" alt="Essence" class="official-logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <div class="logo-placeholder" style="display:none;">Essence</div>
+    </div>
+    <div class="logo-cell">
+      <img src="https://logo.clearbit.com/belvederevodka.com" alt="Belvedere" class="official-logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <div class="logo-placeholder" style="display:none;">Belvedere</div>
+    </div>
+    <div class="logo-cell">
+      <img src="https://logo.clearbit.com/bacardi.com" alt="Bacardi" class="official-logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <div class="logo-placeholder" style="display:none;">Bacardi</div>
+    </div>
+    <div class="logo-cell">
+      <img src="https://logo.clearbit.com/nhl.com" alt="NHL" class="official-logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <div class="logo-placeholder" style="display:none;">NHL</div>
+    </div>
+    <div class="logo-cell">
+      <img src="https://logo.clearbit.com/akilproductions.com" alt="Akil Productions" class="official-logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <div class="logo-placeholder" style="display:none;">Akil<br>Productions</div>
+    </div>
+    <div class="logo-cell">
+      <img src="logo-redbull.jpg" alt="Red Bull" class="official-logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <div class="logo-placeholder" style="display:none;">Red Bull</div>
+    </div>
+    <div class="logo-cell">
+      <img src="logo-bet.png" alt="BET" class="official-logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <div class="logo-placeholder" style="display:none;">BET</div>
+    </div>
+    <div class="logo-cell">
+      <img src="https://logo.clearbit.com/moet.com" alt="Moët Hennessy" class="official-logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <div class="logo-placeholder" style="display:none;">Moët<br>Hennessy</div>
+    </div>
   </div>
 
   <p class="reveal reveal-delay-3" style="font-family:var(--sans);font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);">
