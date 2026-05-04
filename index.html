@@ -701,7 +701,7 @@
   }
   .logo-wall {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 1px;
     background: rgba(245,242,237,0.06);
     border: 1px solid rgba(245,242,237,0.06);
@@ -723,8 +723,12 @@
     max-width: 75%;
     max-height: 45px;
     object-fit: contain;
-    filter: grayscale(1) contrast(1.2) brightness(1.5) opacity(0.6);
+    filter: invert(1) brightness(10) opacity(0.5); /* Force black to pure white and make it semi-transparent */
     transition: all 0.4s ease;
+  }
+  .logo-cell:hover .official-logo {
+    filter: invert(1) brightness(10) opacity(1);
+    transform: scale(1.05);
   }
   .logo-cell:hover .official-logo {
     filter: grayscale(0) contrast(1) brightness(1) opacity(1);
@@ -1484,65 +1488,78 @@
 
   <div class="logo-wall reveal reveal-delay-2">
     <div class="logo-cell">
-      <img src="logo-netflix.jpg" alt="Netflix" class="official-logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <img src="logo-netflix.jpg" alt="Netflix" class="official-logo" loading="lazy">
       <div class="logo-placeholder" style="display:none;">Netflix</div>
     </div>
     <div class="logo-cell">
-      <img src="https://logo.clearbit.com/hbo.com" alt="HBO" class="official-logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <img src="logo-hbo.svg" alt="HBO" class="official-logo" loading="lazy">
       <div class="logo-placeholder" style="display:none;">HBO</div>
     </div>
     <div class="logo-cell">
-      <img src="logo-starz.jpg" alt="Starz" class="official-logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <img src="logo-starz.jpg" alt="Starz" class="official-logo" loading="lazy">
       <div class="logo-placeholder" style="display:none;">Starz</div>
     </div>
     <div class="logo-cell">
-      <img src="https://logo.clearbit.com/versace.com" alt="Versace" class="official-logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <img src="logo-b3.png" alt="Versace" class="official-logo" loading="lazy">
       <div class="logo-placeholder" style="display:none;">Versace</div>
     </div>
     <div class="logo-cell">
-      <img src="https://logo.clearbit.com/gucci.com" alt="Gucci" class="official-logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <img src="logo-gucci.svg" alt="Gucci" class="official-logo" loading="lazy">
       <div class="logo-placeholder" style="display:none;">Gucci</div>
     </div>
     <div class="logo-cell">
-      <img src="https://logo.clearbit.com/ford.com" alt="Ford" class="official-logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-      <div class="logo-placeholder" style="display:none;">Ford<br>Lincoln</div>
+      <img src="logo-b5.png" alt="Ford" class="official-logo" loading="lazy">
+      <div class="logo-placeholder" style="display:none;">Ford</div>
     </div>
     <div class="logo-cell">
-      <img src="https://logo.clearbit.com/time.com" alt="TIME Inc." class="official-logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <img src="logo-lincoln.svg" alt="Lincoln" class="official-logo" loading="lazy">
+      <div class="logo-placeholder" style="display:none;">Lincoln</div>
+    </div>
+    <div class="logo-cell">
+      <img src="logo-time.svg" alt="TIME Inc." class="official-logo" loading="lazy">
       <div class="logo-placeholder" style="display:none;">TIME Inc.</div>
     </div>
     <div class="logo-cell">
-      <img src="https://logo.clearbit.com/essence.com" alt="Essence" class="official-logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <img src="logo-essence.svg" alt="Essence" class="official-logo" loading="lazy">
       <div class="logo-placeholder" style="display:none;">Essence</div>
     </div>
     <div class="logo-cell">
-      <img src="https://logo.clearbit.com/belvederevodka.com" alt="Belvedere" class="official-logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <img src="logo-belvedere.svg" alt="Belvedere" class="official-logo" loading="lazy">
       <div class="logo-placeholder" style="display:none;">Belvedere</div>
     </div>
     <div class="logo-cell">
-      <img src="https://logo.clearbit.com/bacardi.com" alt="Bacardi" class="official-logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <img src="logo-bacardi.svg" alt="Bacardi" class="official-logo" loading="lazy">
       <div class="logo-placeholder" style="display:none;">Bacardi</div>
     </div>
     <div class="logo-cell">
-      <img src="https://logo.clearbit.com/nhl.com" alt="NHL" class="official-logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <img src="logo-nhl.svg" alt="NHL" class="official-logo" loading="lazy">
       <div class="logo-placeholder" style="display:none;">NHL</div>
     </div>
     <div class="logo-cell">
-      <img src="https://logo.clearbit.com/akilproductions.com" alt="Akil Productions" class="official-logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-      <div class="logo-placeholder" style="display:none;">Akil<br>Productions</div>
+      <img src="logo-akil.svg" alt="Akil" class="official-logo" loading="lazy">
+      <div class="logo-placeholder" style="display:none;">Akil</div>
     </div>
     <div class="logo-cell">
-      <img src="logo-redbull.jpg" alt="Red Bull" class="official-logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <img src="logo-productions.svg" alt="Productions" class="official-logo" loading="lazy">
+      <div class="logo-placeholder" style="display:none;">Productions</div>
+    </div>
+    <div class="logo-cell">
+      <img src="logo-redbull.jpg" alt="Red Bull" class="official-logo" loading="lazy">
       <div class="logo-placeholder" style="display:none;">Red Bull</div>
     </div>
     <div class="logo-cell">
-      <img src="logo-bet.png" alt="BET" class="official-logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <img src="logo-bet.png" alt="BET" class="official-logo" loading="lazy">
       <div class="logo-placeholder" style="display:none;">BET</div>
     </div>
     <div class="logo-cell">
-      <img src="https://logo.clearbit.com/moet.com" alt="Moët Hennessy" class="official-logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-      <div class="logo-placeholder" style="display:none;">Moët<br>Hennessy</div>
+      <img src="logo-moet.svg" alt="Moët" class="official-logo" loading="lazy">
+      <div class="logo-placeholder" style="display:none;">Moët</div>
     </div>
+    <div class="logo-cell">
+      <img src="logo-hennessy.svg" alt="Hennessy" class="official-logo" loading="lazy">
+      <div class="logo-placeholder" style="display:none;">Hennessy</div>
+    </div>
+  </div>
   </div>
 
   <p class="reveal reveal-delay-3" style="font-family:var(--sans);font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid);">
