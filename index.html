@@ -35,13 +35,13 @@
 
   :root {
     --ink: #0a0a0a;
-    --ivory: #f5f2ed;
-    --warm-white: #faf8f5;
+    --ivory: #ffffff;
+    --warm-white: #fdfdfc;
     --charcoal: #1c1c1c;
-    --mid: #6b6b6b;
-    --light: #c8c4bc;
-    --accent: #b89a6c;
-    --accent-dark: #8a7050;
+    --mid: #999999;
+    --light: #e2dfd8;
+    --accent: #cfa877;
+    --accent-dark: #9e825e;
     --serif: 'Cormorant Garamond', Georgia, serif;
     --sans: 'DM Sans', Helvetica, sans-serif;
     --display: 'Cormorant Garamond', Georgia, serif;
@@ -53,7 +53,7 @@
     background: var(--ink);
     color: var(--ivory);
     font-family: var(--sans);
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.6;
     overflow-x: hidden;
     cursor: none;
@@ -94,10 +94,10 @@
     content: '';
     position: fixed;
     inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.015'/%3E%3C/svg%3E");
     pointer-events: none;
     z-index: 1000;
-    opacity: 0.4;
+    opacity: 0.25;
   }
 
   /* ─── NAVIGATION ─── */
@@ -377,7 +377,7 @@
     animation: scrollPulse 2s 2s infinite;
   }
   @keyframes scrollPulse {
-    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    0%, 100% { opacity: 0.25; transform: scaleY(1); }
     50% { opacity: 1; transform: scaleY(1.2); }
   }
 
@@ -857,7 +857,7 @@
   .contact-info {
     font-family: var(--sans);
     font-size: 0.85rem;
-    color: #3c3c3c;
+    color: #555555;
     line-height: 1.8;
     margin-bottom: 48px;
   }
@@ -902,7 +902,7 @@
     padding: 12px 0;
     font-family: var(--sans);
     font-size: 0.95rem;
-    font-weight: 300;
+    font-weight: 400;
     color: var(--ink);
     outline: none;
     transition: border-color 0.3s;
@@ -910,7 +910,7 @@
     -webkit-appearance: none;
   }
   .form-input:focus, .form-textarea:focus, .form-select:focus { border-color: var(--ink); }
-  .form-input::placeholder, .form-textarea::placeholder { color: rgba(10,10,10,0.3); }
+  .form-input::placeholder, .form-textarea::placeholder { color: rgba(10,10,10,0.5); }
   .form-textarea { resize: none; height: 120px; }
   .form-submit {
     font-family: var(--sans);
